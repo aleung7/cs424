@@ -1,0 +1,15 @@
+GEO.id,Id
+GEO.id2,Id2
+GEO.display-label,Geography
+HD01_VD01,Estimate; Total:
+HD02_VD01,Margin of Error; Total:
+HD01_VD02,Estimate; Europe:
+HD02_VD02,Margin of Error; Europe:
+HD01_VD47,Estimate; Asia:
+HD02_VD47,Margin of Error; Asia:
+HD01_VD91,Estimate; Africa:
+HD02_VD91,Margin of Error; Africa:
+HD01_VD116,Estimate; Oceania:
+HD02_VD116,Margin of Error; Oceania:
+HD01_VD122,Estimate; Americas:
+HD02_VD122,Margin of Error; Americas:

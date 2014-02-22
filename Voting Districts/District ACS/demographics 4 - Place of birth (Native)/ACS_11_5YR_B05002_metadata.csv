@@ -1,0 +1,33 @@
+GEO.id,Id
+GEO.id2,Id2
+GEO.display-label,Geography
+HD01_VD01,Estimate; Total:
+HD02_VD01,Margin of Error; Total:
+HD01_VD02,Estimate; Native:
+HD02_VD02,Margin of Error; Native:
+HD01_VD03,Estimate; Native: - Born in state of residence
+HD02_VD03,Margin of Error; Native: - Born in state of residence
+HD01_VD04,Estimate; Native: - Born in other state in the United States:
+HD02_VD04,Margin of Error; Native: - Born in other state in the United States:
+HD01_VD05,Estimate; Native: - Born in other state in the United States: - Northeast
+HD02_VD05,Margin of Error; Native: - Born in other state in the United States: - Northeast
+HD01_VD06,Estimate; Native: - Born in other state in the United States: - Midwest
+HD02_VD06,Margin of Error; Native: - Born in other state in the United States: - Midwest
+HD01_VD07,Estimate; Native: - Born in other state in the United States: - South
+HD02_VD07,Margin of Error; Native: - Born in other state in the United States: - South
+HD01_VD08,Estimate; Native: - Born in other state in the United States: - West
+HD02_VD08,Margin of Error; Native: - Born in other state in the United States: - West
+HD01_VD09,Estimate; Native: - Born outside the United States:
+HD02_VD09,Margin of Error; Native: - Born outside the United States:
+HD01_VD10,Estimate; Native: - Born outside the United States: - Puerto Rico
+HD02_VD10,Margin of Error; Native: - Born outside the United States: - Puerto Rico
+HD01_VD11,Estimate; Native: - Born outside the United States: - U.S. Island Areas
+HD02_VD11,Margin of Error; Native: - Born outside the United States: - U.S. Island Areas
+HD01_VD12,Estimate; Native: - Born outside the United States: - Born abroad of American parent(s)
+HD02_VD12,Margin of Error; Native: - Born outside the United States: - Born abroad of American parent(s)
+HD01_VD13,Estimate; Foreign born:
+HD02_VD13,Margin of Error; Foreign born:
+HD01_VD14,Estimate; Foreign born: - Naturalized U.S. citizen
+HD02_VD14,Margin of Error; Foreign born: - Naturalized U.S. citizen
+HD01_VD15,Estimate; Foreign born: - Not a U.S. citizen
+HD02_VD15,Margin of Error; Foreign born: - Not a U.S. citizen
