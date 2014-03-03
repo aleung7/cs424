@@ -7,8 +7,8 @@ var map_width = 1280,
 
 
 var projection = d3.geo.albersUsa()
-					.translate([1000, 400])
-					.scale([500]);
+					.translate([300, 400])
+					.scale([800]);
 
 var path = d3.geo.path()
 	.projection(projection);
@@ -31,22 +31,26 @@ d3.json("us.json",function(json){
 });
 
 
-d3.json("world-countries.json", function(json){
-	
-	var projection = d3.geo.azimuthalEqualArea()
-						.translate([400, 500])
-						.scale(100);
-						
-	var path = d3.geo.path()
-					.projection(projection)
-	
-	console.log(json)
-	map_svg.selectAll("path.countries")
-		.data(json.features)
-		.enter()
-		.append("path")
-		.attr("class", "countries")
-		.attr("d",path)
-		.attr("fill", "#777")
-		.attr("stroke", "#CCC")	
-});
+d3.csv("alabama.csv", function(data){
+	console.log(data);
+
+})
+
+// d3.json("world-countries.json", function(json){
+// 	
+// 	var projection = d3.geo.azimuthalEqualArea()
+// 						.translate([400, 500])
+// 						.scale(100);
+// 						
+// 	var path = d3.geo.path()
+// 					.projection(projection)
+// 	
+// 	console.log(json)
+// 	map_svg.selectAll("path.countries")
+// 		.data(json.features)
+// 		.enter()
+// 		.append("path")
+// 		.attr("class", "countries")
+// 		.attr("d",path)
+// 		.attr("fill", "#777")
+// 		.attr("stroke", "#CCC")	
