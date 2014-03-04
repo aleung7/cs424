@@ -1,0 +1,7 @@
+Eric's Report
+
+Report for Week 1:
+Discussed with David about what we should do for the project.  Arranged a time to meet with Alan over Skype.  Worked on using a perl script that I did for an assignment to scrap the data from the webpage.  I was unable to scrap the webpage correctly.
+
+Report for Week 2:
+Worked on the perl script so more to see if I could fix the problem. Found a tree library for displaying the commodities, but found out later through Lore that it only works in Internet Explorer.  Found out that Alan and David will be using D3 for this project, which I never worked with.
