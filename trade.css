@@ -1,0 +1,14 @@
+form{
+	position: absolute;
+	top: 100px;
+	left: 790px;
+}
+
+svg#states{
+	position: absolute;
+	top: 50px;
+}
+svg#country{
+	position: absolute;
+	left:100px;
+}
