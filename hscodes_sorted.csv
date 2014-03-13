@@ -1,0 +1,84 @@
+01-05, Animal & Animal Products
+01, Live animals
+0101, Horses, asses, mules and hinnies, live
+010111, Purebred breeding animals
+010119, Other Horses
+010120, Asses, mules, and hinnies
+0102, Bovine animals, live
+010210, Purebred breeding animals
+0103, Swine, live
+010310, Purebred breeding animals
+010391, Weighing less than 50 (11023 lb) each
+010392, Weighing 50 (11023 lb) or more each
+0104, Sheep and goats, live
+010410, Sheep
+010420, Goats
+0105, Chickens, ducks, geese, turkeys, and guineas, live
+010511, Chickens, Breeding stock, whether or not purebred: Layer-type (egg-type), Broiler-type (meat-type)
+010519, Turkeys, Ducks, geese and guineas
+010591, Chickens
+010599, Other
+0106, Animals, live, nesoi Nesoi - not elsewhere specified of indicated.
+010600, Rabbits and hares
+02, Meat & edible meat offal
+0201, Meat of bovine animals, fresh or chilled
+020110, Carcasses and half-carcasses, Veal, Other
+020120, Other cuts with bone in: Processed & Other
+020130, Boneless: Processed & Other
+0202, Meat of bovine animals, frozen
+020210, Carcasses and half-carcasses, Veal & Other
+020220, Meat of Bovine Animals With Bone in (Frozen)
+020230, Boneless, Processed
+0203, Meat of swine (pork), fresh, chilled or frozen
+020311, Carcasses and half-carcasses
+020312, Hams, shoulders and cuts thereof, with bone in Processed
+020319, Other, Proces & Other
+020321, Carcasses and half-carcasses
+020322, Hams, shoulders and cuts thereof, with bone in:
+020329, Other, Processed & Other
+0204, Meat of sheep or goats, fresh, chilled or frozen
+020410, Carcasses and half-carcasses of lamb, fresh or chilled Other meat of sheep, fresh or chilled
+020421, Carcasses and half-carcasses
+020422, Other cuts with bone in
+020423, Boneless
+020430, Carcasses and half-carcasses of lamb, frozen Other meat of sheep, frozen
+020441, Carcasses and half-carcasses
+020442, Other cuts with bone in
+020443, Boneless
+020450, Meat of goats
+0205, Meat of horses, asses, mules, hinnies fr, chld, fz
+0206, Ed offal, bovine, swine, sheep, goat, horse, etc.
+020610, Of bovine animals, fresh or chilled Of bovine animals, frozen
+020621, Tongues
+020622, Livers
+020629, Other Edible Offal of Bovine Animals (Frozen)
+020630, Of swine (pork), fresh or chilled Of swine (pork), frozen:
+020641, Livers
+020649, Other Edible Offal of Swine (Frozen)
+020680, Other, fresh or chilled
+020690, Other, frozen Of sheep (including lamb) Of goats, horses, asses, mules or hinnies
+0207, Meat & ed offal of poultry, fresh, chill or frozen
+020710, Turkeys Other: Chickens Young (broilers, fryers, roasters, and capons) Ducks, geese and guineas Poultry not cut in pieces, frozen: Chickens: Young (broilers, fryers, roasters, and capons)
+020722, Turkeys
+020723, Ducks, geese and guineas Poultry cuts and offal (including livers), fresh or chilled:
+020731, Fatty livers of geese or ducks
+020739, Chickens, turkeys, ducks, geese or guineas Poultry cuts and offal other than livers, frozen:
+020741, Chickens
+020742, Turkeys
+020743, Ducks, geese or guineas
+020750, Poultry livers, frozen
+0208, Meat & edible offal nesoi, fresh, chilled or frozen
+020810, Rabbits or hares
+020820, Frogs' legs
+020890, Other Meat and Edible Offal (Fresh, Chilled or Frozen)
+0209, Pig & poultry fat fresh chld frzn salted dried smkd
+020900, Pig fat free of lean meat and poultry fat (not rendered),fresh, chilled, frozen, salted, in brine, dried or smoked
+0210, Meat & ed offal salted, dried etc. & flour & meal
+021011, Hams, shoulders and cuts thereof, with bone in
+021012, Bellies (streaky) and cuts thereof: Bacon Other
+021019, Other Meat of Swine (Salted, in Brine, Dried, Smoked)
+021020, Meat of bovine animals
+021090, Other, including edible flours and meals of meat or meat offal
+03, Fish & crustaceans
+04, Dairy, eggs, honey, & ed. Products
+05, Products of animal origin
