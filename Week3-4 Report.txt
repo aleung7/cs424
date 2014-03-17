@@ -1,0 +1,7 @@
+Eric's Report
+
+Report for Week 3:
+Worked on getting the hscodes.  Managed to get the codes for 01-05 and everything within this group.  Was unable to get the rest of the hscodes.  Dylan offered a text file with all of the hscodes.
+
+Report for Week 4:
+Converted the hscodes in the text file into a csv for David and Alan's use.  Turned the hscodes into a json object and found a google arrayToDataTable to store the hscodes.  Working on a autocomplete dropdown list that allows multiselection of hscodes.  Found a jquery-ui library called Autocomplete, which does the autocomplete but doesn't allow multiselection.
