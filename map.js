@@ -9,59 +9,112 @@ var map_width = 580,
 state_svg.attr("width", map_width)
 		.attr("height", map_height);
 
-d3.csv("/data_csv/country_export.csv", function(data){
-	console.log(data)
-	d3.json("us.json",function(us){
-			var projection = d3.geo.albersUsa()
-								.translate([300, 150])
-								.scale([650]);
 
-			var path = d3.geo.path()
-				.projection(projection);
-			
+d3.csv("/data_csv/import_state.csv", function(import_trade){		
+	d3.csv("/data_csv/country_export.csv", function(data){
+		var trades = {};
+		var numbers = [];
+		console.log(import_trade)
+		import_trade.forEach(function(d){
+			if(d.abbreviatn === "World"){
+				if(d.statename !== "UNIDENTIFIED" && d.statename !== "VIRGIN ISLANDS" && d.statename !== "PUERTO RICO"){
+					trades[d.statename.toLowerCase()] = d.val2012;
+					numbers.push(d.val2012)
+				}
+			}
+		})
+	
+		console.log(trades)
+		var color = d3.scale.quantize()
+							.domain([d3.min(numbers, function(d){return +d;}), d3.max(numbers, function(d){return +d;})])
+							.range(["rgb(247,251,255)", "rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)",
+									"rgb(66,146,198)", "rgb(33,113,181)", "rgb(8,81,156)", "rgb(8,48,107)"])
+							
+		var div = d3.select("body").append("div").attr("class","tooltip").attr("class", "label").style("opacity",0)
 		
-			state_svg.selectAll("path.states")
-					.data(us.features)
-					.enter()
-					.append("path")
-					.attr("class", function(d){return "state " + d.properties.name.toLowerCase();})
-					.attr("d",path)
-					.attr("fill", "#777")
-					.attr("stroke", "#CCC")
-					.on("mouseover", function(d){
-						d3.select(this).transition().duration(200).attr("fill", "red")
-						for(var i = 0; i < data.length; i++){
-							if(d.properties.name.toLowerCase() === data[i]["statename"].toLowerCase()){
-								if(data[i]["countryd"] !== "World" && data[i]["countryd"] !== "Top 25"){
-									console.log(data[i]["countryd"])
-									d3.select("path.country." + data[i]["countryd"].toLowerCase()).transition().duration(100).attr("fill","red")
+		var div_country = d3.select("body").append("div").attr("class","tooltip").attr("class", "label").style("opacity",0)
+		
+		d3.json("us.json",function(us){
+				var projection = d3.geo.albersUsa()
+									.translate([300, 150])
+									.scale([650]);
+
+				var path = d3.geo.path()
+					.projection(projection);
+			
+
+				state_svg.selectAll("path")
+						.data(us.features)
+						.enter()
+						.append("path")
+						.attr("class", function(d){return "state " + d.properties.name.toLowerCase();})
+						.attr("d",path)
+						.attr("fill", function(d){
+							return color(trades[d.properties.name.toLowerCase()]);
+						})
+						.attr("stroke", "#CCC")
+						.on("mouseover", function(d){
+								d3.select(this).transition().duration(200).attr("fill", "red")
+								div_country.transition().duration(500).style("opacity", 9)
+								for(var i = 0; i < data.length; i++){
+									if(d.properties.name.toLowerCase() === data[i]["statename"].toLowerCase()){
+										if(data[i]["countryd"] !== "World" && data[i]["countryd"] !== "Top 25"){
+											d3.select("path.country." + data[i]["countryd"].toLowerCase()).transition().duration(100).attr("fill","red")
+											div_country.html(data[i]["countryd"] + ": " + data[i]["val2012"]).style("top", "500px").style("left", "500px")
+										}
+									}
 								}
-							}
-						}
-					})
-					.on("mouseout", function(d){
-						d3.select(this).transition().duration(200).attr("fill", "#777")
-						for(var i = 0; i < data.length; i++){
-							if(d.properties.name.toLowerCase() === data[i]["statename"].toLowerCase()){
-								if(data[i]["countryd"] !== "World" && data[i]["countryd"] !== "Top 25"){
-									console.log(data[i]["countryd"])
-									d3.select("path.country." + data[i]["countryd"].toLowerCase()).transition().duration(100).attr("fill","#777")
-								}
-							}
-						}
-					})
+								
+								div.transition()
+									.duration(500)
+									.style("opacity",9);
+							
+									console.log(d3.mouse(this)[1])
+								div.html(trades[d.properties.name.toLowerCase()])
+								.style("top", (d3.mouse(this)[1]) + "px")
+								.style("left", (d3.mouse(this)[0] - 100) + "px")
+							
+						})
+						
+						state_svg.on("click", function(){
+							state_svg.selectAll("path.state").data(us.features).enter().append("path").attr("fill",function(d){
+								return color(trades[d.properties.name.toLowerCase()])
+							})
+							d3.selectAll("path.country").attr("fill", "#777")
+						})
+						// .on("mouseout", function(d){
+	// 						d3.select(this).transition().duration(200).attr("fill", function(d){
+	// 							return color(trades[d.properties.name.toLowerCase()])
+	// 						})
+	// 						for(var i = 0; i < data.length; i++){
+	// 							if(d.properties.name.toLowerCase() === data[i]["statename"].toLowerCase()){
+	// 								if(data[i]["countryd"] !== "World" && data[i]["countryd"] !== "Top 25"){
+	// 									//console.log(data[i]["countryd"])
+	// 									d3.select("path.country." + data[i]["countryd"].toLowerCase()).transition().duration(100).attr("fill","#777")
+	// 								}
+	// 							}
+	// 						}
+	// 			   		div.transition()
+	// 							.duration(500)
+	// 							.style("opacity",0);
+	// 							
+	// 			   		div.transition()
+	// 							.duration(500)
+	// 							.style("opacity",0);
+	// 					})
+		});
 	});
 });
 
 var country_svg = d3.select("body").append("svg").attr("id", "countries")
 
-country_svg.attr("width", 800)
-				.attr("height", 800)
+country_svg.attr("width", 600)
+				.attr("height", 700)
 				
 d3.json("world-countries.json", function(country){
 	var projection = d3.geo.equirectangular()
-						.translate([400, 550])
-						.scale(120);
+						.translate([300, 550])
+						.scale(100);
 
 	var path = d3.geo.path()
 					.projection(projection)
