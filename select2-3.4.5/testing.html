@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<script src="jquery-1.11.0.min.js"></script>
+		<link href="select2.css" rel="stylesheet"/>
+		<script src="select2.js"></script>
+
+		<script>
+			$(document).ready(function() { 
+			function format(item) { return item.commodity; };
+
+				$.getJSON( "hscodes.json", function(datas) {
+					$("#e9").select2({
+						multiple: true,
+						minimumInputLength: 2,
+						data:{ results: datas, text: 'commodity'},
+						formatSelection: format,
+						formatResult: format                       
+					});
+				});
+			});
+		</script>
+
+	</head>
+	<body>
+		<input type="hidden" id="e9" style="width:800px"/>
+	</body>
+</html>
