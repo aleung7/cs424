@@ -19,7 +19,17 @@ country_svg.attr("width", 600)
 d3.csv("/data_csv/import_state.csv", function(import_trade){		
 	d3.csv("/data_csv/country_export.csv", function(data){
 		var trades = {};
+		var partners = {};
 		var numbers = [];
+		
+		data.forEach(function(d){
+			if(d.countryd === "World"){
+				partners[d.statename.toLowerCase()] = [];
+			}
+		})
+		
+		
+		console.log(partners)
 		import_trade.forEach(function(d){
 			if(d.abbreviatn === "World"){
 				if(d.statename !== "UNIDENTIFIED" && d.statename !== "VIRGIN ISLANDS" && d.statename !== "PUERTO RICO"){
@@ -28,7 +38,8 @@ d3.csv("/data_csv/import_state.csv", function(import_trade){
 				}
 			}
 		})
-	
+		
+		console.log(trades)
 		console.log(data)
 		
 		var states = data.map(function(state){
@@ -65,12 +76,13 @@ d3.csv("/data_csv/import_state.csv", function(import_trade){
 							})
 							.attr("stroke", "#CCC")
 							.on("click", function(d){
-									d3.select(this).transition().duration(200).attr("fill", "red")
+									d3.select(this).transition().duration(200).attr("fill", "green")
+									d3.selectAll("path.country").attr("fill", "#939393")
 									// div_country.transition().duration(500).style("opacity", 9)
 									for(var i = 0; i < data.length; i++){
 										if(d.properties.name.toLowerCase() === data[i]["statename"].toLowerCase()){
 											if(data[i]["countryd"] !== "World" && data[i]["countryd"] !== "Top 25"){
-												d3.select("path.country." + data[i]["countryd"].toLowerCase()).transition().duration(100).attr("fill","red")
+												d3.select("path.country." + data[i]["countryd"].toLowerCase()).transition().duration(100).attr("fill","green")
 												// div_country.html(data[i]["countryd"] + ": " + data[i]["val2012"])
 	// 												.style("left", "500px")
 	// 												.style("top", "500px")
@@ -91,14 +103,14 @@ d3.csv("/data_csv/import_state.csv", function(import_trade){
 												return color(trades[state.properties.name.toLowerCase()])
 											}
 										})
-							
+									
 							})
 												
 							d3.select("#reset").on("click", function(){
 								state_svg.selectAll("path.state").data(us.features).attr("fill",function(d){
 									return color(trades[d.properties.name.toLowerCase()])
 								})
-								d3.selectAll("path.country").attr("fill", "#777")
+								d3.selectAll("path.country").attr("fill", "#939393")
 								div.transition()
 									.duration(500)
 									.style("opacity",0);
@@ -117,7 +129,7 @@ d3.csv("/data_csv/import_state.csv", function(import_trade){
 								.append("path")
 								.attr("class",function(d){return "country " + d.properties.name.toLowerCase();})
 								.attr("d",path)
-								.attr("fill", "#777")
+								.attr("fill", "#939393")
 								.attr("stroke", "#CCC")
 								.on("mouseover", function(d){
 									
