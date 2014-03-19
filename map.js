@@ -85,6 +85,12 @@ d3.csv("/data_csv/import_state.csv", function(import_trade){
 									div.html(trades[d.properties.name.toLowerCase()])
 										.style("top", (d3.mouse(this)[1]) + "px")
 										.style("left", (d3.mouse(this)[0] - 100) + "px")
+									
+									state_svg.selectAll("path.state").data(us.features).attr("fill",function(state){
+											if(state.properties.name.toLowerCase !== state){
+												return color(trades[state.properties.name.toLowerCase()])
+											}
+										})
 							
 							})
 												
