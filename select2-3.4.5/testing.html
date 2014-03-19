@@ -6,7 +6,7 @@
 
 		<script>
 			$(document).ready(function() { 
-			function format(item) { return item.commodity; };
+				function format(item) { return item.commodity; };
 
 				$.getJSON( "hscodes.json", function(datas) {
 					$("#e9").select2({
@@ -17,9 +17,20 @@
 						formatResult: format                       
 					});
 				});
+				var codes = $('#e9').select2('val');
+				
+				//To access the hscodes call codes[0].value which returns the codes
+				//like this 01-05,30,010100,3003
+				
+				//Testing to see that values are passed with each new commodity
+				//Can remove the alert
+				$('#e9').change(function () {
+					alert(codes[0].value);
+				});
+				//console.log(codes[0].value);
 			});
+			
 		</script>
-
 	</head>
 	<body>
 		<input type="hidden" id="e9" style="width:800px"/>
