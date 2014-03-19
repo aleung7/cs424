@@ -1,14 +1,19 @@
 svg#states{
 	position: absolute;
 	top: 50px;
+	/*z-index:1;*/
 }
 svg#country{
 	position: absolute;
 	left:100px;
 }
-path{
-	z-index:4;
+
+button{
+	position:absolute;
+	top:50px;
+	left:550px;
 }
+
 div.tooltip {  
 	position: absolute;
 	z-index: 2;
