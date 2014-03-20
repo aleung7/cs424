@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="d3.v3.min.js" charset="utf-8"></script>
+	<script src="jquery-1.11.0.min.js"></script>
+	<link href="select2-3.4.5/select2.css" rel="stylesheet"/>
+	<script src="select2-3.4.5/select2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="trade.css">
+	<script>
+		$(document).ready(function() { 
+			function format(item) { return item.commodity; };
+
+			$.getJSON( "select2-3.4.5/hscodes.json", function(datas) {
+				$("#e9").select2({
+					multiple: true,
+					minimumInputLength: 2,
+					data:{ results: datas, text: 'commodity'},
+					formatSelection: format,
+					formatResult: format                       
+				});
+			});
+			var codes = $('#e9').select2('val');
+			
+			//To access the hscodes call codes[0].value which returns the codes
+			//like this 01-05,30,010100,3003
+			
+			//Testing to see that values are passed with each new commodity
+			//Can remove the alert
+			$('#e9').change(function () {
+				alert(codes[0].value);
+			});
+			//console.log(codes[0].value);
+		});
+		
+	</script>
+	<script type="text/javascript">
+			
+			//<![CDATA[
+
+			var tabLinks = new Array();
+			var contentDivs = new Array();
+
+			function init() {
+
+				// Grab the tab links and content divs from the page
+				var tabListItems = document.getElementById('tabs').childNodes;
+				for (var i = 0; i < tabListItems.length; i++) {
+					if (tabListItems[i].nodeName == "LI" ) {
+						var tabLink = getFirstChildWithTagName( tabListItems[i], 'A' );
+						var id = getHash( tabLink.getAttribute('href') );
+						tabLinks[id] = tabLink;
+						contentDivs[id] = document.getElementById(id);
+					}
+				}
+
+				// Assign onclick events to the tab links, and
+				// highlight the first tab
+				var i = 0;
+
+				for ( var id in tabLinks ) {
+					tabLinks[id].onclick = showTab;
+					tabLinks[id].onfocus = function() { this.blur() };
+					if ( i == 0 ) tabLinks[id].className = 'selected';
+					i++;
+				}
+
+				// Hide all content divs except the first
+				var i = 0;
+			
+				for (var id in contentDivs) {
+					if ( i != 0 ){
+						console.log(contentDivs[id]);
+						contentDivs[id].className = 'tabContent hide';
+						i++;
+					}
+				}
+			}
+
+			function showTab() {
+				  var selectedId = getHash( this.getAttribute('href') );
+
+				  // Highlight the selected tab, and dim all others.
+				  // Also show the selected content div, and hide all others.
+				  for ( var id in contentDivs ) {
+					if ( id == selectedId ) {
+					  tabLinks[id].className = 'selected';
+					  contentDivs[id].className = 'tabContent';
+					} else {
+					  tabLinks[id].className = '';
+					  contentDivs[id].className = 'tabContent hide';
+					}
+			  	  }
+
+			  // Stop the browser following the link
+			  return false;
+			}
+
+			function getFirstChildWithTagName( element, tagName ) {
+			  for ( var i = 0; i < element.childNodes.length; i++ ) {
+				if ( element.childNodes[i].nodeName == tagName ) return element.childNodes[i];
+			  }
+			}
+
+			function getHash( url ) {
+			  var hashPos = url.lastIndexOf ( '#' );
+			  return url.substring( hashPos + 1 );
+			}
+
+			//]]>
+		</script>
+</head>
+<body onLoad="init()">
+	<ul id="tabs">
+	  		<li><a href="#Trade_App">Trade App</a></li>
+			<li><a href="#about">About</a></li>
+	</ul>
+
+	<div class="tabContent" id="Trade_App">
+		<div>
+			<h1>Trade Map and Trade Search Bar<h1>
+				<div>
+					<input type="hidden" id="e9" style="width:800px"/>	
+					<script src="map.js"></script>
+					<button id="reset">Reset</button>
+				</div>
+		</div>
+	</div>
+	
+	<div class="tabContent hide" id="about">
+				<h1>About this Project</h1>
+			        <p>This visualization was developed in March 2014 by: Alan Leung, David Wang, Eric Wu</p>
+			        <p>The libraries used in this project were D3 with TopoJSON, Select2, and</p>
+			        <p>The original import/export data for each state came from the <a href="http://www.census.gov/foreign-trade/statistics/state/data/index.html">US census page on foreign trade</a>.</p>
+			        <p>The data for the hscodes came from the <a href ="http://www.foreign-trade.com/reference/hscode.htm">Foreign trade website</a>.</p>
+			        <p>The data for this project was obtained from <a href="http://www.evl.uic.edu/aej/424/14project1.html">CS 424 Project 1</a>.</p>
+			        <p>The application consists of a visualization of the import/export data for the US, there is a map showing the countries that traded with a specific state as well as a graph with a breakdown of the data</p>
+			        <h1>Role of team members</h1>
+			        <p>Alan: creation of the graph for the visualization, hosting the project on his page</p>
+			        <p>David: creation of the map of the states and the world map, Implementing the map using 							TopoJSON</p>
+		        	  <p>Eric: creating a parser to get the data, modifying the data into a csv for David and Alan, 						creating the multi-select autocomplete select list for the commodities, creating the about 				page.</p>
+	</div>
+</body>
+</html>
